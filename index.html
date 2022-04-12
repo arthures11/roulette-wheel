@@ -1,0 +1,865 @@
+
+<html>
+
+<head>
+    <style>
+
+        #menu {
+            width: 20%;
+            float: left;
+            margin-right: 100px;
+            clear: both;
+        }
+
+        body {
+            background-color: navajowhite;
+        }
+
+        .gridy {
+            display: grid;
+            grid-template-columns: 25% 25% 12.5% 12.5% 12.5% 12.5%;
+            grid-auto-flow: dense;
+            grid-template-rows: 7.14% 7.14% 7.4% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14% 7.14%;
+            grid-auto-columns: 1fr;
+            gap: normal;
+            border: 1px solid black;
+            grid-template-areas:
+                "puste1 puste1 x0 x0 x0 puste2"
+                "x1-18 x1-12 x1 x2 x3 s1"
+                "x1-18 x1-12 x4 x5 x6 s2"
+                "nieparzyste x1-12 x7 x8 x9 s3"
+                "nieparzyste x1-12 x10 x11 x12 s4"
+                "red x13-24 x13 x14 x15 s5"
+                "red x13-24 x16 x17 x18 s6"
+                "black x13-24 x19 x20 x21 s7"
+                "black x13-24 x22 x23 x24 s8"
+                "parzyste x25-36 x25 x26 x27 s9"
+                "parzyste x25-36 x28 x29 x30 s10"
+                "x19-36 x25-36 x31 x32 x33 s11"
+                "x19-36 x25-36 x34 x35 x36 s12"
+                "puste3 puste3 s13 s14 s15 puste4";
+            background-color: darkseagreen;
+        }
+
+        .disabled {
+            pointer-events: none;
+        }
+
+        .gridy > div {
+            border: 1px solid gray;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .gridy > div:hover {
+                background-color: yellowgreen;
+            }
+
+            .gridy > div:active {
+                background-color: red;
+            }
+
+
+
+        .puste1 {
+            grid-area: puste1;
+            background-color: white;
+        }
+
+        .x0 {
+            grid-area: x0;
+        }
+
+        .puste2 {
+            grid-area: puste2;
+            background-color: white;
+        }
+
+        .x1-12 {
+            grid-area: x1-12;
+        }
+
+        .x1-18 {
+            grid-area: x1-18;
+        }
+
+        .nieparzyste {
+            grid-area: nieparzyste;
+        }
+
+        .x1 {
+            grid-area: x1;
+            background-color: indianred;
+        }
+
+        .x2 {
+            grid-area: x2;
+            background-color: black;
+            color: white;
+        }
+
+        .x3 {
+            grid-area: x3;
+            background-color: indianred;
+        }
+
+        .x4 {
+            grid-area: x4;
+            background-color: black;
+            color: white;
+        }
+
+        .x5 {
+            grid-area: x5;
+            background-color: indianred;
+        }
+
+        .x6 {
+            grid-area: x6;
+            background-color: black;
+            color: white;
+        }
+
+        .x7 {
+            grid-area: x7;
+            background-color: indianred;
+        }
+
+        .x8 {
+            grid-area: x8;
+            background-color: black;
+            color: white;
+        }
+
+        .x9 {
+            grid-area: x9;
+            background-color: indianred;
+        }
+
+        .x10 {
+            grid-area: x10;
+            background-color: black;
+            color: white;
+        }
+
+        .x11 {
+            grid-area: x11;
+            background-color: black;
+            color: white;
+        }
+
+        .x12 {
+            grid-area: x12;
+            background-color: indianred;
+        }
+
+        .s1 {
+            grid-area: s1;
+        }
+
+        .s2 {
+            grid-area: s2;
+        }
+
+        .s3 {
+            grid-area: s3;
+        }
+
+        .s4 {
+            grid-area: s4;
+        }
+
+        .red {
+            grid-area: red;
+            background-color: indianred;
+        }
+
+        .black {
+            grid-area: black;
+            background-color: black;
+            color: white;
+        }
+
+        .x13-24 {
+            grid-area: x13-24;
+        }
+
+        .parzyste {
+            grid-area: parzyste;
+        }
+
+        .x19-36 {
+            grid-area: x19-36;
+        }
+
+        .puste3 {
+            grid-area: puste3;
+            background-color: white;
+        }
+
+        .puste4 {
+            grid-area: puste4;
+            background-color: white;
+        }
+
+        .s5 {
+            grid-area: s5;
+        }
+
+        .s6 {
+            grid-area: s6;
+        }
+
+        .s7 {
+            grid-area: s7;
+        }
+
+        .s8 {
+            grid-area: s8;
+        }
+
+        .s9 {
+            grid-area: s9;
+        }
+
+        .s10 {
+            grid-area: s10;
+        }
+
+        .s11 {
+            grid-area: s11;
+        }
+
+        .s12 {
+            grid-area: s12;
+        }
+
+        .x13 {
+            grid-area: x13;
+            background-color: black;
+            color: white;
+        }
+
+        .x14 {
+            grid-area: x14;
+            background-color: indianred;
+        }
+
+        .x15 {
+            grid-area: x15;
+            background-color: black;
+            color: white;
+        }
+
+        .x16 {
+            grid-area: x16;
+            background-color: indianred;
+        }
+
+        .x17 {
+            grid-area: x17;
+            background-color: black;
+            color: white;
+        }
+
+        .x18 {
+            grid-area: x18;
+            background-color: indianred;
+        }
+
+        .x19 {
+            grid-area: x19;
+            background-color: indianred;
+        }
+
+        .x20 {
+            grid-area: x20;
+            background-color: black;
+            color: white;
+        }
+
+        .x21 {
+            grid-area: x21;
+            background-color: indianred;
+        }
+
+        .x22 {
+            grid-area: x22;
+            background-color: black;
+            color: white;
+        }
+
+        .x23 {
+            grid-area: x23;
+            background-color: indianred;
+        }
+
+        .x24 {
+            grid-area: x24;
+            background-color: black;
+            color: white;
+        }
+
+        .x25 {
+            grid-area: x25;
+            background-color: indianred;
+        }
+
+        .x26 {
+            grid-area: x26;
+            background-color: black;
+            color: white;
+        }
+
+        .x27 {
+            grid-area: x27;
+            background-color: indianred;
+        }
+
+        .x28 {
+            grid-area: x28;
+            background-color: black;
+            color: white;
+        }
+
+        .x29 {
+            grid-area: x29;
+            background-color: black;
+            color: white;
+        }
+
+        .x30 {
+            grid-area: x30;
+            background-color: indianred;
+        }
+
+        .x31 {
+            grid-area: x31;
+            background-color: black;
+            color: white;
+        }
+
+        .x32 {
+            grid-area: x32;
+            background-color: indianred;
+        }
+
+        .x33 {
+            grid-area: x33;
+            background-color: black;
+            color: white;
+        }
+
+        .x34 {
+            grid-area: x34;
+            background-color: indianred;
+        }
+
+        .x35 {
+            grid-area: x35;
+            background-color: black;
+            color: white;
+        }
+
+        .x36 {
+            grid-area: x36;
+            background-color: indianred;
+        }
+
+        .s13 {
+            grid-area: s13;
+        }
+
+        .s14 {
+            grid-area: s14;
+        }
+
+        .s15 {
+            grid-area: s15;
+        }
+
+        .x25-36 {
+            grid-area: x25-36;
+        }
+
+        .info {
+            width: 45%;
+            margin-right: 100px;
+            word-wrap: break-word;
+            font-size:20pt;
+            
+        }
+
+        .obsluga {
+            margin-left: 1px;
+            margin-top: 10px;
+            position: fixed;
+            bottom: 17%;
+            left: 0.2%;
+            font-size:15pt;
+        }
+
+        #btn1 {
+            font-size:15pt;
+            bottom: 7%;
+            left: 1%;
+            position: fixed;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            border: none;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+            #btn1:hover {
+                background-color: blue;
+                color: white;
+            }
+
+        #win_lose {
+            bottom: 10%;
+            left: 11%;
+            position: fixed;
+        }
+
+        #liczba {
+            bottom: 5%;
+            left: 11%;
+            position: fixed;
+        }
+
+        #wheel {
+            position: fixed;
+            bottom: 10%;
+            right: 10%;
+            height: auto;
+            width: auto;
+            max-width: 40%;
+            max-height: 100%;
+        }
+
+        #ball {
+            position: fixed;
+            bottom: 9%;
+            right: 10%;
+            height: auto;
+            width: auto;
+            max-width: 40%;
+            max-height: 100%;
+        }
+
+        @media (max-device-width: 800px) {
+            #win_lose {
+                bottom: 18%;
+                left: 50%;
+                position: fixed;
+            }
+
+            #liczba {
+                bottom: 14%;
+                left: 44%;
+                position: fixed;
+            }
+
+            #wheel {
+                bottom: 22%;
+                right: 10%;
+                height: auto;
+                width: auto;
+                max-width: 80%;
+                max-height: 50%;
+            }
+
+            #ball {
+                position: fixed;
+                bottom: 21.5%;
+                right: 10%;
+                height: auto;
+                width: auto;
+                max-width: 80%;
+                max-height: 50%;
+            }
+
+            .obsluga {
+                margin-left: 500px;
+                position: fixed;
+                bottom: 5%;
+                right: 10%;
+                font-size: 35pt;
+            }
+
+            #zaklad {
+                height: 100px;
+                font-size: 20pt;
+            }
+
+            .info {
+                position: fixed;
+                bottom: 5%;
+                right: 41%;
+                font-size: 25pt;
+            }
+
+            #menu {
+                width: 100%;
+                height: 50%;
+                font-size: 45pt;
+            }
+
+            button {
+                width: 100%;
+                height: 300%;
+            }
+
+            .gridy {
+                height: 80%;
+            }
+
+            #btn1 {
+                position: fixed;
+                width: 20%;
+                height: 7%;
+                bottom: 15%;
+                left:77.5%;
+                border-radius: 50%;
+                background-color: #4CAF50;
+                border: none;
+                color: black;
+                padding: 10px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 36px;
+                margin: 4px 2px;
+            }
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>123</title>
+</head>
+<body>
+    <div class="container">
+        <div id="menu">
+            <div class="gridy">
+                <div class="puste1 disabled"></div>
+                <div class="x0" onclick="czysto()">0</div>
+                <div class="puste2 disabled"></div>
+                <div class="x1-12" onclick="jol3(1,12)">1-12</div>
+                <div class="x1-18" onclick="jol3(1,18)">1-18</div>
+                <div class="nieparzyste" onclick="parz(false)">nieparz</div>
+                <div class="x1 r" onclick="jol(1)">1</div>
+                <div class="x2 b" onclick="jol(2)">2</div>
+                <div class="x3 r" onclick="jol(3)">3</div>
+                <div class="x4 b" onclick="jol(4)">4</div>
+                <div class="x5 r" onclick="jol(5)">5</div>
+                <div class="x6 b" onclick="jol(6)">6</div>
+                <div class="x7 r" onclick="jol(7)">7</div>
+                <div class="x8 b" onclick="jol(8)">8</div>
+                <div class="x9 r" onclick="jol(9)">9</div>
+                <div class="x10 b" onclick="jol(10)">10</div>
+                <div class="x11 b" onclick="jol(11)">11</div>
+                <div class="x12 r" onclick="jol(12)">12</div>
+                <div class="s1" onclick="jol2(0,3)">←</div>
+                <div class="s2" onclick="jol2(1,3)">←</div>
+                <div class="s3" onclick="jol2(2,3)">←</div>
+                <div class="s4" onclick="jol2(3,3)">←</div>
+                <div class="red" onclick="red_black('.r')">red</div>
+                <div class="black" onclick="red_black('.b')">black</div>
+                <div class="x13-24" onclick="jol3(13,24)">13-24</div>
+                <div class="parzyste" onclick="parz(true)">parz</div>
+                <div class="x19-36" onclick="jol3(19,36)">19-36</div>
+                <div class="puste3 disabled"></div>
+                <div class="puste4 disabled"></div>
+                <div class="s5" onclick="jol2(4,3)">←</div>
+                <div class="s6" onclick="jol2(5,3)">←</div>
+                <div class="s7" onclick="jol2(6,3)">←</div>
+                <div class="s8" onclick="jol2(7,3)">←</div>
+                <div class="s9" onclick="jol2(8,3)">←</div>
+                <div class="s10" onclick="jol2(9,3)">←</div>
+                <div class="s11" onclick="jol2(10,3)">←</div>
+                <div class="s12" onclick="jol2(11,3)">←</div>
+                <div class="x13 b" onclick="jol(13)">13</div>
+                <div class="x14 r" onclick="jol(14)">14</div>
+                <div class="x15 b" onclick="jol(15)">15</div>
+                <div class="x16 r" onclick="jol(16)">16</div>
+                <div class="x17 b" onclick="jol(17)">17</div>
+                <div class="x18 r" onclick="jol(18)">18</div>
+                <div class="x19 r" onclick="jol(19)">19</div>
+                <div class="x20 b" onclick="jol(20)">20</div>
+                <div class="x21 r" onclick="jol(21)">21</div>
+                <div class="x22 b" onclick="jol(22)">22</div>
+                <div class="x23 r" onclick="jol(23)">23</div>
+                <div class="x24 b" onclick="jol(24)">24</div>
+                <div class="x25 r" onclick="jol(25)">25</div>
+                <div class="x26 b" onclick="jol(26)">26</div>
+                <div class="x27 r" onclick="jol(27)">27</div>
+                <div class="x28 b" onclick="jol(28)">28</div>
+                <div class="x29 b" onclick="jol(29)">29</div>
+                <div class="x30 r" onclick="jol(30)">30</div>
+                <div class="x31 b" onclick="jol(31)">31</div>
+                <div class="x32 r" onclick="jol(32)">32</div>
+                <div class="x33 b" onclick="jol(33)">33</div>
+                <div class="x34 r" onclick="jol(34)">34</div>
+                <div class="x35 b" onclick="jol(35)">35</div>
+                <div class="x36 r" onclick="jol(36)">36</div>
+                <div class="s13" onclick="jol2(12,0)">↑</div>
+                <div class="s14" onclick="jol2(12,1)">↑</div>
+                <div class="s15" onclick="jol2(12,2)">↑</div>
+                <div class="x25-36" onclick="jol3(25,36)">25-36</div>
+            </div>
+        </div>
+    </div>
+    <div class="info">
+        <p id="kasa">
+
+        </p>
+        <p id="wartosc_zakladu">
+
+        </p>
+        <p id="pot_wygrana">
+
+        </p>
+        <p id="asd">
+
+        </p>
+        <p id="staty">
+
+        </p>
+        <p id="win_lose">
+
+        </p>
+        <p id="liczba">
+
+        </p>
+        <img id="wheel" src="wheel.png" alt="wheel">
+        <img id="ball" src="ball.png" alt="ball">
+    </div>
+    <section class="obsluga">
+        <label for="zaklad">wartość zakładu:</label>
+        <input type="number" id="zaklad">
+        <button id="btn1" type="button" onclick="graj()">Zagraj!</button><br><br>
+    </section>
+    <script>
+        var executing = false;
+        const wheel = [0, 26, 3, 35, 12, 28, 7, 29, 18, 22, 9, 31, 14, 20, 1, 33, 16, 24, 5, 10, 23, 8, 30, 11, 36, 13, 27, 6, 34, 17, 25, 2, 21, 4, 19, 15, 32];
+        var kox = 0;
+        const sleep = ms => new Promise(r => setTimeout(r, ms));
+        var rundy = 0;
+        var rundy_win = 0;
+        var rundy_lose = 0;
+        const input = document.querySelector('input');
+        const log = document.getElementById('wartosc_zakladu');
+        input.addEventListener('input', updateValue);
+        function updateValue(e) {
+            document.getElementById("kasa").innerHTML = "Twoja kasa: " + kredyt.toFixed(5);
+            log.textContent = "Wartosc zakladu: " + e.target.value;
+            if (liczby.length > 0) {
+                var ile = (document.getElementById("zaklad").value * (36 / liczby.length) - document.getElementById("zaklad").value);
+                document.getElementById("pot_wygrana").innerHTML = "Potencjalna wygrana: " + ile.toFixed(2) + " \n(x" + ((ile / document.getElementById("zaklad").value) + 1).toFixed(2) + ")";
+                var zaklad = document.getElementById("zaklad").value;
+                zaklad = parseInt(zaklad);
+                document.getElementById("asd").innerHTML = "Szansa: " + (100 / ((zaklad + ile) / zaklad)).toFixed(2) + "%";
+            }
+        }
+        var kredyt = 1000;
+        document.getElementById("kasa").innerHTML = "Twoja kasa: " + kredyt;
+        const liczby = [];
+
+        const dudy = createArray(12, 3);
+        liczba = 1;
+        for (let i = 0; i < 12; i++) {
+            for (let j = 0; j < 3; j++) {
+                dudy[i][j] = liczba;
+                liczba++;
+            }
+        }
+        function parz(hik) {
+            var sw = false;
+            for (let i = 0; i < 12; i++) {
+                for (let j = 0; j < 3; j++) {
+                    for (let k = 0; k < liczby.length; k++) {
+                        if (liczby[k] == dudy[i][j]) { sw = true; break; }
+                    }
+                    if (sw == true) { sw = false; continue; }
+                    if (dudy[i][j] % 2 == 0 && hik) {
+                        jol(dudy[i][j]);
+                    }
+                    else {
+                        if (dudy[i][j] % 2 != 0 && hik == false) {
+                            jol(dudy[i][j]);
+                        }
+
+                    }
+                }
+            }
+            update_table();
+        }
+        function red_black(who) {
+            document.querySelectorAll(who).forEach(function (el) {
+                el.click();
+            });
+            update_table();
+        }
+        function czysto() {
+            liczby.length = 0;
+
+            for (let i = 1; i <= 36; i++) {
+                document.getElementsByClassName("x" + i)[0].style.backgroundColor = "";
+                document.getElementsByClassName("x" + i)[0].style.color = "";
+            }
+            update_table();
+        }
+        function jol3(od_, do_) {
+            var sw = false;
+            for (let i = od_; i <= do_; i++) {
+                for (let j = 0; j < liczby.length; j++) {
+                    if (liczby[j] == i) { sw = true; }
+                }
+                if (sw == true) { sw = false; continue; }
+                jol(i);
+            }
+            update_table();
+        }
+        function jol2(rzad, kolumna) {
+            var sw = false;
+            if (rzad < 12) {
+                for (let i = 0; i < kolumna; i++) {
+                    for (let j = 0; j < liczby.length; j++) {
+                        if (liczby[j] == dudy[rzad][i]) { sw = true; }
+                    }
+                    if (sw == true) { sw = false; continue; }
+                    jol(dudy[rzad][i]);
+                }
+            }
+            else {
+
+                for (let i = 0; i < rzad; i++) {
+                    for (let j = 0; j < liczby.length; j++) {
+                        if (liczby[j] == dudy[i][kolumna]) { sw = true; }
+                    }
+                    if (sw == true) { sw = false; continue; }
+                    jol(dudy[i][kolumna]);
+                }
+            }
+
+            update_table();
+        }
+        function jol(name) {
+            for (let i = 0; i < liczby.length; i++) {
+                if (liczby[i] == name) { return; }
+            }
+            document.getElementsByClassName("x" + name)[0].style.backgroundColor = "lightblue";
+            document.getElementsByClassName("x" + name)[0].style.color = "black";
+            liczby.push(name);
+            console.log(liczby);
+            update_table();
+        }
+        async function graj() {
+            if (executing) { alert("mozesz uruchomic tylko 1 gre"); return; }
+            executing = true;
+            if (kredyt < document.getElementById("zaklad").value) {
+                alert("Nie masz tyle kasy");
+                executing = false;
+                return;
+            }
+            if (liczby.length == 0) {
+                alert("Nie wybrano liczb");
+                executing = false;
+                return;
+            }
+            if (document.getElementById("zaklad").value <= 0) {
+                alert("Zakład musi być większy od 0");
+                executing = false;
+                return;
+            }
+            var liczba = Math.floor(Math.random() * 36);
+            var sleeptime = 1;
+            for (let i = 0; i <= 1060; i++) {
+                if (kox + 1 > 360) { kox = 0; }
+                else { kox += 1; }
+                document.getElementById("wheel").style.transform = "rotate(" + kox + "deg)";
+                document.getElementById("ball").style.transform = "rotate(" + -kox + "deg)";
+                await sleep(sleeptime);
+                if (i > 460) {
+                    sleeptime += 0.025;
+                }
+                if (i > 700 && kox == 0) {
+                    kox = 0;
+                    for (let i = 0; i < liczba*5; i++) {
+                        if (kox > 90) { kox += 0.972; }
+                        else { kox += 1; }
+                        document.getElementById("wheel").style.transform = "rotate(" + kox + "deg)";
+                        document.getElementById("ball").style.transform = "rotate(" + -kox + "deg)";
+                        sleeptime += 0.085;
+                        await sleep(sleeptime);
+                    }
+                    break;
+                }
+               
+                else { continue; }
+            }
+            liczba = wheel[liczba];
+            rundy++;
+
+            console.log("wylosowana liczba to: " + liczba)
+            if (liczby.length == 0) { alert("nie buguj"); executing = false; return; }
+            for (let i = 0; i < liczby.length; i++) {
+                if (liczby[i] == liczba) {
+                    console.log("WIN");
+                    kredyt += (document.getElementById("zaklad").value * (36 / liczby.length) - document.getElementById("zaklad").value);
+                    console.log("kasa: " + kredyt + "\n\n");
+                    update_table();
+                    document.getElementById("liczba").innerHTML = "wylosowana liczba: " + liczba;
+                    document.getElementById("win_lose").innerHTML = "Wygrałeś " + (document.getElementById("zaklad").value * (36 / liczby.length) - document.getElementById("zaklad").value).toFixed(5);
+                    document.getElementById("win_lose").style.color = "green";
+                    rundy_win++;
+                    executing = false;
+                    return;
+                }
+            }
+            console.log("LOSE");
+            rundy_lose++;
+            document.getElementById("win_lose").innerHTML = "Przegrałeś " + document.getElementById("zaklad").value;
+            document.getElementById("liczba").innerHTML = "wylosowana liczba: " + liczba;
+            document.getElementById("win_lose").style.color = "red";
+            kredyt = kredyt - document.getElementById("zaklad").value;
+            update_table();
+            if (kredyt <= 0) {
+                alert("KONIEC GRY\nsuma rund: " + rundy + "\nilość wygranych rund: " +
+                    rundy_win + "\nilosc przegranych rund: " + rundy_lose);
+            }
+            executing = false;
+            console.log("kasa: " + kredyt + "\n\n");
+        }
+        function createArray(length) {
+            var arr = new Array(length || 0),
+                i = length;
+
+            if (arguments.length > 1) {
+                var args = Array.prototype.slice.call(arguments, 1);
+                while (i--) arr[length - 1 - i] = createArray.apply(this, args);
+            }
+
+            return arr;
+        }
+        function update_table() {
+            let ile = (document.getElementById("zaklad").value * (36 / liczby.length) - document.getElementById("zaklad").value);
+            let zaklad = document.getElementById("zaklad").value;
+            zaklad = parseInt(zaklad);
+            document.getElementById("kasa").innerHTML = "Twoja kasa: " + kredyt.toFixed(5);
+            if (liczby.length > 0) {
+                document.getElementById("pot_wygrana").innerHTML = "Potencjalna wygrana: " + ile.toFixed(2) + " \n(x" + ((ile / document.getElementById("zaklad").value) + 1).toFixed(2) + ")";
+                document.getElementById("asd").innerHTML = "Szansa: " + (100 / ((zaklad + ile) / zaklad)).toFixed(2) + "%";
+            }
+        }
+
+    </script>
+</body>
+</html>
